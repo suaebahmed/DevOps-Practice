@@ -39,3 +39,18 @@ Need for container orchestration tool
 - High Availability or no downtime
 - Scalability or high performance
 - Disaster recovery - backup and restore (burn or explode server center)
+
+# Notes
+
+```
+<!-- Build the image with tag name suaeb/ -->
+docker build -t suaeb/node-sample-project:v1.0.1
+
+<!-- if the Dockerfile name is different -->
+docker build -t suaeb/node-simple-project -f Dockerfile .
+
+<!-- Run the docker image with image id -->
+docker run -d -p 3000:3000 b236c5bd16e0
+
+*** -p Host port and express.js listening port should be same.
+```
