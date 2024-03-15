@@ -25,7 +25,6 @@ app.get("/", (req, res, next) => {
 // Create a task
 app.post("/tasks", async (req, res) => {
   const { title, completed } = req.body;
-  console.log(req.body);
   try {
     const task = await prisma.task.create({
       data: {
