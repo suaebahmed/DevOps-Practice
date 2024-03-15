@@ -18,18 +18,6 @@ app.use(cors());
 // });
 app.use(bodyParser.json());
 
-// Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/express-mongo-crud", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
-
 // Read
 app.get("/", (req, res, next) => {
   res.send("Hello World, I am from docker compose!!");
@@ -62,3 +50,5 @@ app.delete("/items/:id", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on: http://localhost:${PORT}`);
 });
+
+module.exports = app;
