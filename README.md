@@ -1,5 +1,9 @@
 # DevOps practice
 
+# Publish image to github container registry
+
+docker login -u suaebahmed -p {{GITHUB_TOKEN}}
+
 # Kubernetes
 
 Need for container orchestration tool
