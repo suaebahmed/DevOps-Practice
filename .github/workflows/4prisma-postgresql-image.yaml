@@ -14,5 +14,4 @@ jobs:
       - name: Build and push
         run: |
               docker build './4 Prisma PostgreSQL' --tag ghcr.io/suaebahmed/4prisma-postgresql-image:latest
-              docker run ghcr.io/suaebahmed/4prisma-postgresql-image:latest
               docker push ghcr.io/suaebahmed/4prisma-postgresql-image:latest
