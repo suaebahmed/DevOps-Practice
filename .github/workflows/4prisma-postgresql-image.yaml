@@ -1,7 +1,13 @@
-name: Publish Docker image to GitHub Container Registry
-on: [push]
+name: "Prisma-postgresql: Publish Docker image to GitHub Container Registry"
+on:
+  push:
+    branches: ["main", "latest"]
+    paths:
+      - "4 Prisma PostgreSQL/**"
+      - ".github/workflows/4prisma-postgresql-image.yaml"
+
 jobs:
-  publish-hello-docker-image:
+  build-and-push-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
