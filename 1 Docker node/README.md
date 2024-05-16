@@ -6,16 +6,15 @@
 
 ## Some common cmd in docker
 
-```
+```properties
 docker images
 docker ps           // to see running container
 docker log img_id   // to see log of running..
-
 ```
 
 ## Build and run
 
-```
+```properties
 => docker build -t suaeb/node-sample-project:v1.0.1
 
     If the Dockerfile name is different
@@ -32,4 +31,14 @@ docker log img_id   // to see log of running..
     3000 host port, after : 3000 is container port
     *** Express.js listening port same as the host port.
 
+```
+
+### Publish image
+
+```properties
+docker login --username suaebahmed --password GITHUB_TOKEN  ghcr.io
+docker build . -t ghcr.io/suaebahmed/porichoy-cube:latest
+
+docker push  ghcr.io/suaebahmed/porichoy-cube:latest
+docker pull  ghcr.io/suaebahmed/porichoy-cube:latest
 ```
