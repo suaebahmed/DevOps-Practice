@@ -16,6 +16,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD:
       MYSQL_DB: test
+
   mongo:
     image: mongo
     container_name: app_mongo
@@ -24,5 +25,6 @@ services:
       - 27017:27017
     volumes:
       - ~/mongo:/data/db
+
 volumes:
   mongodb:
