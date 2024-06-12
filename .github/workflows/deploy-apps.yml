@@ -17,20 +17,21 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-        ENV: ${{ github.event.inputs.opt || 'test' }}
+        ENV: ${{ github.event.inputs.opt || 'staging' }}
     steps:
         - name: Check out source repository
           uses: actions/checkout@v3
         - run: |
             echo "input: $opt"
+            echo "variable: $env.ENV"
 
-      #   - name: App1 - Build And Deploy for Staging
+      # - name: App1 - Build And Deploy for Staging
       #   if: ${{ env.ENV == 'staging'}}
       #   uses: Azure/static-web-apps-deploy@v1
       # - run: |
       #     echo "Deploying app1"
 
-      #   - name: App2- Build And Deploy for Staging
+      # - name: App2- Build And Deploy for Staging
       #   if: ${{ env.ENV == 'staging'}}
       #   uses: Azure/static-web-apps-deploy@v1
       # - run: |
