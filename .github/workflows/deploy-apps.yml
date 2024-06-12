@@ -1,37 +1,37 @@
-# Manual trigger for deployment
 name: Deploy Apps
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
 
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
+      opt:
+        description: Environment
         required: true
-        default: 'warning'
         type: choice
         options:
-        - info
-        - warning
-        - debug
-      tags:
-        description: 'Test scenario tags'
-        required: false
-        type: boolean
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
+            - 'test'
+            - 'production'
+        default: test
 
 jobs:
-  log-the-inputs:
+  deploy:
     runs-on: ubuntu-latest
+    env:
+        ENV: ${{ github.event.inputs.opt || 'test' }}
     steps:
-      - run: |
-          echo "Log level: $LEVEL"
-          echo "Tags: $TAGS"
-          echo "Environment: $ENVIRONMENT"
-        env:
-          LEVEL: ${{ inputs.logLevel }}
-          TAGS: ${{ inputs.tags }}
-          ENVIRONMENT: ${{ inputs.environment }}
-          
+        - name: Check out source repository
+          uses: actions/checkout@v3
+        - run: |
+            echo "input: $opt"
+
+      #   - name: App1 - Build And Deploy for Staging
+      #   if: ${{ env.ENV == 'staging'}}
+      #   uses: Azure/static-web-apps-deploy@v1
+      # - run: |
+      #     echo "Deploying app1"
+
+      #   - name: App2- Build And Deploy for Staging
+      #   if: ${{ env.ENV == 'staging'}}
+      #   uses: Azure/static-web-apps-deploy@v1
+      # - run: |
+      #     echo "deploying app2"
