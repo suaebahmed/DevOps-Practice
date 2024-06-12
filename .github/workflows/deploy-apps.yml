@@ -9,9 +9,9 @@ on:
         required: true
         type: choice
         options:
-            - 'test'
+            - 'staging'
             - 'production'
-        default: test
+        default: staging
 
 jobs:
   deploy:
