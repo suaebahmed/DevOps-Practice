@@ -35,10 +35,10 @@ jobs:
     env:
         ENV: ${{ github.event.inputs.opt || 'staging' }}
     steps:
-        # - name: Check out source repository
-          # uses: actions/checkout@v3
-        - name: Print dispatch inputs opt 
-          run: "hello world"
+        - name: Check out source repository
+          uses: actions/checkout@v3
+        # - name: Print dispatch inputs opt 
+        #   run: "hello world"
 
         - name: Print env
           run: ${{ env.ENV }}
