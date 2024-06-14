@@ -37,11 +37,11 @@ jobs:
     steps:
         - name: Check out source repository
           uses: actions/checkout@v3
-        # - name: Print dispatch inputs opt 
-        #   run: "hello world"
+        - name: Print dispatch inputs opt 
+          run: echo inputs opt ${{ github.event.inputs.opt }}
 
         - name: Print env
-          run: ${{ env.ENV }}
+          run: echo ENV value is ${{ env.ENV }}
 
       # - name: App1 - Build And Deploy for Staging
       #   if: ${{ env.ENV == 'staging'}}
