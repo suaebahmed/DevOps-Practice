@@ -38,7 +38,7 @@ jobs:
         # - name: Check out source repository
           # uses: actions/checkout@v3
         - name: Print dispatch inputs opt 
-          run: ${{ github.event.inputs.opt }}
+          run: "hello world"
 
         - name: Print env
           run: ${{ env.ENV }}
