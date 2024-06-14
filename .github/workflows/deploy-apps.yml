@@ -4,26 +4,44 @@ name: Deploy Apps
 on:
   workflow_dispatch:
     inputs:
-      opt:
-        description: Environment
-        required: true
-        type: choice
-        options:
-            - 'staging'
-            - 'production'
-        default: staging
+        opt:
+          description: Environment
+          required: true
+          type: choice
+          options:
+              - 'staging'
+              - 'production'
+          default: staging
+
+  workflow_call:
+    inputs:
+      username:
+        description: 'A username passed from the caller workflow'
+        default: 'john-doe'
+        required: false
+        type: string
+
 
 jobs:
+  print-username:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the input name to STDOUT
+        run: echo The username is ${{ inputs.username }}
+
   deploy:
     runs-on: ubuntu-latest
     env:
         ENV: ${{ github.event.inputs.opt || 'staging' }}
     steps:
-        - name: Check out source repository
-          uses: actions/checkout@v3
-        - run: |
-            echo "input: $opt"
-            echo "variable: $env.ENV"
+        # - name: Check out source repository
+          # uses: actions/checkout@v3
+        - name: Print dispatch inputs opt 
+          run: ${{ github.event.inputs.opt }}
+
+        - name: Print env
+          run: ${{ env.ENV }}
 
       # - name: App1 - Build And Deploy for Staging
       #   if: ${{ env.ENV == 'staging'}}
